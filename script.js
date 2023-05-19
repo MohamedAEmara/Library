@@ -14,7 +14,7 @@ let total_cnt = 0, read_cnt = 0, not_cnt = 0;
 
 open.addEventListener('click', () => {
     header.classList.add('hide');
-    topp.classList.add('hide');
+    // topp.classList.add('hide');
     footer.classList.add('hide');
     openn.classList.add('hide');
     
@@ -25,7 +25,7 @@ open.addEventListener('click', () => {
 
 function closeForm() {
     header.classList.remove('hide');
-    topp.classList.remove('hide');
+    // topp.classList.remove('hide');
     footer.classList.remove('hide');
     openn.classList.remove('hide');
     popup.classList.remove('show');
@@ -35,7 +35,7 @@ function closeForm() {
 cancel.addEventListener('click', () => {
 
     header.classList.remove('hide');
-    topp.classList.remove('hide');
+    // topp.classList.remove('hide');
     footer.classList.remove('hide');
     openn.classList.remove('hide');
     

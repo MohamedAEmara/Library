@@ -111,7 +111,7 @@ button {
 }
 
 .yes > .color {
-    background-color: aquamarine;
+    background-color: var(--green);
 }
 
 .no > .color {
@@ -355,4 +355,11 @@ input {
 
 .top{
     border: 3px solid var(--black)
+}
+
+container > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
