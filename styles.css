@@ -45,12 +45,15 @@
 
 }
 
-
 body {
     display: flex;
     flex-direction: column;
     padding: 0;
     margin: 0;
+    font-family: 'omarRegular';
+    background-color: var(--gray);
+
+
 }
 
 button {
@@ -81,6 +84,7 @@ button {
 }
 
 .top {
+    border: 3px solid var(--black);
     display: flex;
     justify-content: space-between;
     background-color:aliceblue;
@@ -111,7 +115,7 @@ button {
 }
 
 .yes > .color {
-    background-color: var(--green);
+    background-color: hsl(150, 73%, 48%);;
 }
 
 .no > .color {
@@ -122,14 +126,11 @@ img {
     width: 80px;
 }
 .header {
-    background-color: gray;
+    background-color: var(--bg);
     display: flex;
     justify-content: space-between;
-}
-
-.footer {
-    position: fixed;
-    bottom: 15px;
+    display: flex;
+    padding: 10px;
 }
 
 .popup {
@@ -150,22 +151,14 @@ img {
     box-shadow: 3px 2px 20px black;
     display: flex;
     position: fixed;
-    /* top: 25%; */
-    /* left: 25%; */
     align-self: center;
-    top: 30%;
-    
-    /* width: 50%; */
+    top: 10%;
     background-color: gray;
-    
     flex-direction: column;
     justify-content: space-between;
     padding: 30px;
 }
 
-/* .popup.hide {
-    display: none;
-} */
 
 form {
     display: flex;
@@ -176,9 +169,8 @@ input {
     height: 20px;
 }
 
-
 input:focus {
-    border: 2px solid green;
+    border: 2px solid hsl(150, 73%, 48%);;
 }
 #header.hide, #topp.hide, #open.hide, #footer.hide{
     filter: blur(10px);
@@ -203,11 +195,6 @@ input:focus {
 }
 
 
-
-.header {
-    display: flex;
-    padding: 10px;
-}
 
 .log {
     margin-right: 30px;
@@ -235,7 +222,6 @@ input:focus {
 }
 
 select, select > *{
-    /* height: 30px; */
     border-radius: 20px;
     padding: 10px;
 }
@@ -258,29 +244,15 @@ option {
 }
 
 
-.footer {
-    background-color: cadetblue;
-
-}
-
 button:hover {
     cursor: pointer;
     box-shadow: 2px 2px 10px ;
 }
 
 
-body {
-    font-family: 'omarRegular';
-}
-
-
 .logo > div {
     font-family: 'omarSemi';
     color: var(--one);
-}
-
-.header {
-    background-color: var(--bg);
 }
 
 .log > div:first-child{
@@ -296,14 +268,14 @@ body {
 }
 
 #popup {
-    background-color: var(--gray);
+    background-color: var(--four);
     font-family: 'omarLight';
     font-size: 18px;
 }
 
 
 form > button {
-    background-color: #22e935;
+    background-color: hsl(150, 73%, 48%);;
 }
 
 option, input, select {
@@ -347,14 +319,15 @@ input {
     color: black;
 }
 
+.container > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .yes > div, .no > div {
     font-size: 17px;
     font-family: 'omarRegular';
-}
-
-.top{
-    border: 3px solid var(--black)
 }
 
 container > * {
@@ -362,4 +335,20 @@ container > * {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+
+.footer {
+    background-color: cadetblue;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 5px;
+}
+
+
+.btnWrapper {
+    display: flex;
+    gap: 10px;
 }

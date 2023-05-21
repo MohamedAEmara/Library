@@ -19,7 +19,6 @@ open.addEventListener('click', () => {
     openn.classList.add('hide');
     
     popup.classList.add('show');
-    console.log('haha');
 });
 
 
@@ -59,6 +58,9 @@ function Book(name, author, pages, read, date) {
     console.log("Added");
 };
 
+function getDate(dateTime){
+	return `${dateTime.getDate()}-${dateTime.getMonth() + 1}-${dateTime.getFullYear()}`
+}
 
 function test(book) {
     if(book.author == '' || book.name == '' || book.pages <= 0 ||  book.date == undefined || book.date == "Invalid Date")
@@ -67,14 +69,12 @@ function test(book) {
 }
 
 submit.addEventListener('click', () => {
-    console.log("starttttttttttttt");
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = (Number)(document.getElementById('num').value);
     const read = document.getElementById('status').value;
-    const date = new Date(document.getElementById('date').value);
-    console.log(read);
-
+    const tmp = document.getElementById('date').value;
+    const date = tmp;
     
     let myBook;
     if(read == 'yes') {     // the value in the html element option
@@ -99,9 +99,6 @@ submit.addEventListener('click', () => {
         document.getElementById('readCnt').innerHTML = read_cnt;
         document.getElementById('notCnt').innerHTML = not_cnt;
 
-        console.log(total_cnt + "  "  + read_cnt + "  " + not_cnt);
-
-
         closeForm();
 
     } else {
@@ -111,9 +108,7 @@ submit.addEventListener('click', () => {
 })
 
 function addBookToLibrary(book) {
-    console.log('before push');
     myLibrary.push(book);
-    console.log('after push');
     createBook(book);
 }
 
@@ -129,6 +124,7 @@ function createBook(item) {
     const titleDiv = document.createElement('div');
     const authorDiv = document.createElement('div');
     const pageDiv = document.createElement('div');
+    const dateDiv = document.createElement('div');
     const removeBtn = document.createElement('button');
     const readBtn = document.createElement('button');
 
@@ -141,11 +137,14 @@ function createBook(item) {
     authorDiv.textContent = item.author;
     authorDiv.classList.add('author');
 
-    pageDiv.textContent = item.pages;
+    pageDiv.textContent = item.pages + ' Pages';
     pageDiv.classList.add('pages');
 
     readBtn.classList.add('readBtn');
     readBtn.setAttribute('id', 'readBtn' + globalCnt);
+
+    dateDiv.textContent = item.date;
+    dateDiv.setAttribute('id', 'date' + globalCnt);
 
 
     if(item.read == 'no' || item.read == 0) {
@@ -160,13 +159,17 @@ function createBook(item) {
     removeBtn.setAttribute('id', 'removeBtn' + globalCnt);
     removeBtn.textContent = 'Delete Book';
 
+    const btnWrapper = document.createElement('div');
+    btnWrapper.setAttribute('id', 'btnWrapper'+globalCnt);
+    btnWrapper.appendChild(readBtn);
+    btnWrapper.appendChild(removeBtn);
+
     bookDiv.appendChild(titleDiv);
     bookDiv.appendChild(authorDiv);
     bookDiv.appendChild(pageDiv);
-    bookDiv.appendChild(readBtn);  
-    bookDiv.appendChild(removeBtn);
+    bookDiv.appendChild(dateDiv);
+    bookDiv.appendChild(btnWrapper)
 
-    console.log('hahahaha');
     library.appendChild(bookDiv);
 
     globalCnt ++;
@@ -181,35 +184,32 @@ function createBook(item) {
 
 
 function handleClick(e) {
-    console.log(e.target.innerHTML + " l;asdfj;als" + e.data + " " + e.textContent)
     // check if the caller is change read state button
     if(e.target.innerHTML == 'Read') {
-        console.log("read");
         const btnn = document.getElementById(e.target.id);
         btnn.style.backgroundColor = '#e04f63';
         btnn.textContent = 'Not Read';
         read_cnt --;
         not_cnt ++;
     } else if(e.target.innerHTML == 'Not Read') {
-        console.log("not read");
         const btnn = document.getElementById(e.target.id)
         btnn.style.backgroundColor = '#63da63';
         btnn.textContent = 'Read';
         read_cnt ++;
         not_cnt--;
     } else if(e.target.innerHTML == 'Delete Book') {
-        console.log('delete');
         const btnn = document.getElementById(e.target.id);
         const parent = btnn.parentElement;
 
-        if(parent.childNodes[3].textContent == 'Read') {
+        if(parent.childNodes[0].textContent == 'Read') {
             read_cnt --;
         } else {
             not_cnt --;
         }
 
         total_cnt --;
-        parent.remove();
+        const card = parent.parentNode;
+        card.remove();
 
         
     }
