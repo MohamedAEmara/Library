@@ -14,7 +14,6 @@ let total_cnt = 0, read_cnt = 0, not_cnt = 0;
 
 open.addEventListener('click', () => {
     header.classList.add('hide');
-    // topp.classList.add('hide');
     footer.classList.add('hide');
     openn.classList.add('hide');
     
@@ -48,8 +47,8 @@ cancel.addEventListener('click', () => {
 
 let myLibrary = [];
 
-function Book(name, author, pages, read, date) {
-    this.name = name;
+function Book(title, author, pages, read, date) {
+    this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
@@ -70,6 +69,7 @@ function test(book) {
 
 submit.addEventListener('click', () => {
     const title = document.getElementById('title').value;
+    console.log(document.getElementById('title').value + " ll");
     const author = document.getElementById('author').value;
     const pages = (Number)(document.getElementById('num').value);
     const read = document.getElementById('status').value;
@@ -110,6 +110,8 @@ submit.addEventListener('click', () => {
 function addBookToLibrary(book) {
     myLibrary.push(book);
     createBook(book);
+    console.log("bookkkkkk");
+    console.log(book);
 }
 
 
@@ -130,10 +132,18 @@ function createBook(item) {
 
     bookDiv.classList.add('book');      // add .book class to bookDiv
 
-    titleDiv.textContent = item.title;
+    titleDiv.setAttribute('id', 'title' + String(globalCnt));
     titleDiv.classList.add('title');
+    titleDiv.textContent = item.title;
+    console.log(typeof(bookDiv));
+    console.log(bookDiv);
+    console.log(typeof(item.title));
+    console.log(item.title);
 
-    
+    // titleDiv.innerHTML = item.title;
+    // document.getElementById('title' + (globalCnt)).innerHTML = item.title;
+
+    console.log(titleDiv);
     authorDiv.textContent = item.author;
     authorDiv.classList.add('author');
 

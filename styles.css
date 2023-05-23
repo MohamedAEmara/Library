@@ -330,7 +330,7 @@ input {
     font-family: 'omarRegular';
 }
 
-container > * {
+.container > * {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -351,4 +351,34 @@ container > * {
 .btnWrapper {
     display: flex;
     gap: 10px;
+}
+
+
+.book > div:first-child {
+    font-family: 'omarBold';
+    color:rgb(31, 224, 160);
+    font-size: 25px;
+}
+
+
+#popup > * > div {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+input {
+    width: 200px;
+    height: 24px;
+    
+}
+
+.five {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.five > * {
+    width: 200px;
+
+    
 }
