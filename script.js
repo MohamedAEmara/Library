@@ -8,6 +8,8 @@ const topp = document.getElementById('topp');
 const cancel = document.getElementById('cancel');
 const submit = document.getElementById('submit');
 
+
+
 globalCnt = 1;
 
 let total_cnt = 0, read_cnt = 0, not_cnt = 0;
@@ -23,7 +25,6 @@ open.addEventListener('click', () => {
 
 function closeForm() {
     header.classList.remove('hide');
-    // topp.classList.remove('hide');
     footer.classList.remove('hide');
     openn.classList.remove('hide');
     popup.classList.remove('show');
@@ -140,9 +141,7 @@ function createBook(item) {
     console.log(typeof(item.title));
     console.log(item.title);
 
-    // titleDiv.innerHTML = item.title;
-    // document.getElementById('title' + (globalCnt)).innerHTML = item.title;
-
+   
     console.log(titleDiv);
     authorDiv.textContent = item.author;
     authorDiv.classList.add('author');
